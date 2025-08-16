@@ -24,6 +24,9 @@ services:
       - "8081:8080"  # HTTP web honeypot
     depends_on:
       - cowrie
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 
   shipper:
     build:
@@ -35,3 +38,6 @@ services:
       - INGEST_TOKEN=${INGEST_TOKEN}
     volumes:
       - ./data/cowrie:/cowrie-var:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
